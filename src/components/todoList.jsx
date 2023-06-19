@@ -1,30 +1,65 @@
-const TodoList = ({ setTodoList, toDoList }) => {
+import { styled } from "styled-components";
+import { AiFillCloseCircle } from "react-icons/ai";
+import TodoForm from "./todoForm";
+
+const TodoList = ({
+    setTodoList,
+    toDoList,
+    writeMode,
+    setWriteMode,
+    writeModeColor,
+}) => {
     const removeTodo = (id) => {
         // setTodoList([...arr.slice(0,idx), ...arr.slice(idx+1)])
         setTodoList((prev) => prev.filter((x) => x.id !== id));
     };
 
-    const toggleDone = (id) => {
-        setTodoList((prev) =>
-            prev.map((x) => (x.id === id ? { ...x, done: !x.done } : x))
-        );
-    };
     return (
-        <ul>
+        <TodoListArea>
+            {writeMode ? (
+                <TodoForm
+                    writeModeColor={writeModeColor}
+                    setWriteMode={setWriteMode}
+                    setTodoList={setTodoList}
+                />
+            ) : null}
+
             {toDoList.map((x) => (
-                <li key={x.id}>
-                    <input
-                        type="checkbox"
-                        onChange={() => toggleDone(x.id)}
-                        checked={x.done}
-                    />
-                    {x.todo}
-                    <button>수정</button>
-                    <button onClick={() => removeTodo(x.id)}>X</button>
-                </li>
+                <ReadNote key={x.id} bgcolor={x.noteColor}>
+                    <pre>{x.todo}</pre>
+                    <button
+                        className="btn_close"
+                        onClick={() => removeTodo(x.id)}
+                    >
+                        <AiFillCloseCircle className="icon" />
+                    </button>
+                </ReadNote>
             ))}
-        </ul>
+        </TodoListArea>
     );
 };
 
 export default TodoList;
+
+const TodoListArea = styled.ul`
+    display: flex;
+    gap: 22px;
+    flex-wrap: wrap;
+    .btn_close {
+        position: absolute;
+        right: 16px;
+        top: 16px;
+        .icon {
+            font-size: 24px;
+        }
+    }
+`;
+
+const ReadNote = styled.li`
+    position: relative;
+    padding: 16px;
+    width: 200px;
+    height: 200px;
+    background-color: ${(props) => props.bgcolor};
+    border-radius: 16px;
+`;
