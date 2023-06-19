@@ -39,9 +39,9 @@ function App() {
                 </ColorList>
                 <NoteList>
                     <NoteHeader>
-                        {/* <NowTime>⏰ 2:40:15 PM</NowTime> */}
-                        <NowTime>⏰ {localTime}</NowTime>
-                        <Location>
+                        {/* <NowTime>⏱ 2:40:15 PM</NowTime> */}
+                        <NowTime>⏱ {localTime}</NowTime>
+                        <Location className="location">
                             <img src={cloudImg} alt="" />
                             <LocationInfo>
                                 <span>34°</span>
@@ -72,8 +72,11 @@ const Wrapper = styled.div`
     /* background-color: ${(props) => props.bgcolor}; */
     padding: 60px;
     height: 100vh;
-    min-width: 1200px;
     background-color: #e5ebf4;
+    min-width: 360px;
+    @media (max-width: 600px) {
+        padding: 0;
+    }
 `;
 
 const Container = styled.div`
@@ -81,6 +84,9 @@ const Container = styled.div`
     height: 100%;
     background-color: #fff;
     border-radius: 32px;
+    @media (max-width: 600px) {
+        border-radius: 0;
+    }
 `;
 
 const Logo = styled.h1`
@@ -118,11 +124,28 @@ const ColorNote = styled.li`
 const NoteList = styled.div`
     padding: 30px 50px;
     width: calc(100% - 80px);
-    height: 807px;
     overflow-y: auto;
+
+    &::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: #e5ebf478;
+        border-radius: 100px;
+    }
+    &::-webkit-scrollbar-track {
+        background-color: #e5ebf478;
+        border-radius: 100px;
+        background-clip: padding-box;
+        border: 3px solid transparent;
+    }
 
     h1 {
         font-size: 28px;
+    }
+    @media (max-width: 600px) {
+        padding: 30px 40px;
     }
 `;
 const TodoBox = styled.div`
@@ -160,6 +183,12 @@ const NoteHeader = styled.div`
     display: flex;
     justify-content: space-between;
     padding-bottom: 20px;
+    @media (max-width: 600px) {
+        flex-direction: column-reverse;
+        .location {
+            padding-bottom: 20px;
+        }
+    }
 `;
 
 const NoteTitle = styled.h2`
