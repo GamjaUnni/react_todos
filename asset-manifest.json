@@ -1,0 +1,10 @@
+{
+  "files": {
+    "main.js": "/react_todos/static/js/main.c73f50fa.js",
+    "index.html": "/react_todos/index.html",
+    "main.c73f50fa.js.map": "/react_todos/static/js/main.c73f50fa.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.c73f50fa.js"
+  ]
+}
