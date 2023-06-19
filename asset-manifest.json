@@ -1,11 +1,11 @@
 {
   "files": {
-    "main.js": "/react_todos/static/js/main.16b81022.js",
+    "main.js": "/react_todos/static/js/main.354f7553.js",
     "static/media/Shower.png": "/react_todos/static/media/Shower.7d92f889a8516ad63cf0.png",
     "index.html": "/react_todos/index.html",
-    "main.16b81022.js.map": "/react_todos/static/js/main.16b81022.js.map"
+    "main.354f7553.js.map": "/react_todos/static/js/main.354f7553.js.map"
   },
   "entrypoints": [
-    "static/js/main.16b81022.js"
+    "static/js/main.354f7553.js"
   ]
 }
