@@ -3,8 +3,10 @@ import { AiFillCloseCircle } from "react-icons/ai";
 import TodoForm from "./todoForm";
 
 const TodoList = ({
-    setTodoList,
+    toDoId,
+    setTodoId,
     toDoList,
+    setTodoList,
     writeMode,
     setWriteMode,
     writeModeColor,
@@ -18,6 +20,8 @@ const TodoList = ({
         <TodoListArea>
             {writeMode ? (
                 <TodoForm
+                    toDoId={toDoId}
+                    setTodoId={setTodoId}
                     writeModeColor={writeModeColor}
                     setWriteMode={setWriteMode}
                     setTodoList={setTodoList}

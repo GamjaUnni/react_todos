@@ -9,6 +9,7 @@ import cloudImg from "./assets/images/Shower.png";
 const ColorArr = ["#FEC971", "#FD9C74", "#B593FD", "#00D4FF", "#E3EE90"];
 
 function App() {
+    const [toDoId, setTodoId] = useState(1);
     const [toDoList, setTodoList] = useState([]);
     const [writeMode, setWriteMode] = useState(false);
     const [writeModeColor, setWriteModeColor] = useState("");
@@ -20,6 +21,7 @@ function App() {
         setWriteMode(true);
         setWriteModeColor(color);
     };
+
     return (
         <Wrapper bgcolor="blue">
             <GlobalStyle />
@@ -53,6 +55,8 @@ function App() {
                     <NoteTitle>Notes</NoteTitle>
                     <TodoBox>
                         <TodoList
+                            toDoId={toDoId}
+                            setTodoId={setTodoId}
                             setTodoList={setTodoList}
                             toDoList={toDoList}
                             writeMode={writeMode}
