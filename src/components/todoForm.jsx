@@ -1,6 +1,31 @@
 import { useState } from "react";
 import { styled } from "styled-components";
 import { BsCheckCircleFill } from "react-icons/bs";
+import { saveTodos } from "../todosStorage";
+import TodoList from "./todoList";
+
+function saveNowDate() {
+    const monthNames = [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec",
+    ];
+
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = monthNames[date.getMonth()];
+    const day = date.getDate();
+    return `${month} ${day}, ${year}`;
+}
 
 /*
     id: 고유한 번호값,
@@ -8,13 +33,7 @@ import { BsCheckCircleFill } from "react-icons/bs";
     done: checkbox 체크용(boolean),
     mode: 수정모드인지 아닌지(boolean)
 */
-const TodoForm = ({
-    toDoId,
-    setTodoId,
-    setTodoList,
-    writeModeColor,
-    setWriteMode,
-}) => {
+const TodoForm = ({ setTodoList, writeModeColor, setWriteMode }) => {
     const [todo, setTodo] = useState("");
     const onChange = (e) => {
         setTodo(e.target.value);
@@ -22,21 +41,26 @@ const TodoForm = ({
 
     const onSubmit = (e) => {
         e.preventDefault();
+        if (!todo) {
+            alert("할 일을 입력하세요.");
+            return;
+        }
+
         // setTodoList([...toDoList, todo]);
         // 성능 최적화 : 퍼포먼스(f12-perfomence) 속도가 빨라지는 것을 확인할 수 있다.
         setTodoList((prev) => [
             {
-                id: toDoId, // Ref의 현재 값을 가져온다.
+                id: Date.now(), // Ref의 현재 값을 가져온다.
                 todo: todo,
                 done: false,
                 mode: false,
                 noteColor: writeModeColor,
+                wroteDate: saveNowDate(),
             },
             ...prev,
         ]);
         setTodo("");
         setWriteMode(false);
-        setTodoId((prev) => prev + 1); // id값을 하나씩 증가 시킨다. (각각의 todo를 구별하기 위함)
     };
 
     return (

@@ -1,26 +1,29 @@
-import { useEffect, useRef, useState } from "react";
+import { useState, useEffect } from "react";
 import TodoList from "./components/todoList";
 import { styled } from "styled-components";
 import GlobalStyle from "./globalStyle";
 import { AiFillPlusCircle } from "react-icons/ai";
 import { TiLocation } from "react-icons/ti";
 import cloudImg from "./assets/images/Shower.png";
+import Clock from "./components/clock";
+import { getTodos, saveTodos } from "./todosStorage";
 
 const ColorArr = ["#FEC971", "#FD9C74", "#B593FD", "#00D4FF", "#E3EE90"];
 
 function App() {
-    const [toDoId, setTodoId] = useState(1);
-    const [toDoList, setTodoList] = useState([]);
+    const [toDoList, setTodoList] = useState(getTodos() ?? []);
     const [writeMode, setWriteMode] = useState(false);
     const [writeModeColor, setWriteModeColor] = useState("");
-    const [localTime, setLocalTime] = useState(createGetLocalTimes());
-    useInterval(() => {
-        setLocalTime(createGetLocalTimes());
-    }, 1000);
+
     const changeWriteMode = (color) => {
         setWriteMode(true);
         setWriteModeColor(color);
     };
+
+    console.log(getTodos());
+    useEffect(() => {
+        saveTodos(toDoList);
+    }, [toDoList]);
 
     return (
         <Wrapper bgcolor="blue">
@@ -42,7 +45,9 @@ function App() {
                 <NoteList>
                     <NoteHeader>
                         {/* <NowTime>⏱ 2:40:15 PM</NowTime> */}
-                        <NowTime>⏱ {localTime}</NowTime>
+                        <NowTime>
+                            ⏱ <Clock />
+                        </NowTime>
                         <Location className="location">
                             <img src={cloudImg} alt="" />
                             <LocationInfo>
@@ -55,8 +60,6 @@ function App() {
                     <NoteTitle>Notes</NoteTitle>
                     <TodoBox>
                         <TodoList
-                            toDoId={toDoId}
-                            setTodoId={setTodoId}
                             setTodoList={setTodoList}
                             toDoList={toDoList}
                             writeMode={writeMode}
@@ -205,36 +208,3 @@ const NowTime = styled.h3`
     font-size: 12px;
     font-weight: 400;
 `;
-
-function createGetLocalTimes() {
-    const d = new Date();
-    const hh = d.getHours() > 12 ? d.getHours() % 12 : d.getHours();
-    const mm = d.getMinutes();
-    const ss = d.getSeconds();
-    const AM_PM = d.getHours() >= 12 ? "PM" : "AM";
-
-    return `${zeroTenFormat(hh)}:${zeroTenFormat(mm)}:${zeroTenFormat(
-        ss
-    )} ${AM_PM}`;
-
-    function zeroTenFormat(s) {
-        return +s < 10 ? "0" + s : s;
-    }
-}
-
-const useInterval = (callback, delay) => {
-    const savedCallback = useRef();
-
-    useEffect(() => {
-        savedCallback.current = callback;
-    });
-
-    useEffect(() => {
-        const tick = () => {
-            savedCallback.current();
-        };
-
-        const timerId = setInterval(tick, delay);
-        return () => clearInterval(timerId);
-    }, [delay]);
-};
