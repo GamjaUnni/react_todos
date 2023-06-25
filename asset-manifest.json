@@ -1,11 +1,19 @@
 {
   "files": {
-    "main.js": "/react_todos/static/js/main.60670dfb.js",
+    "main.js": "/react_todos/static/js/main.dbb3d5c6.js",
+    "static/media/SunCloud.png": "/react_todos/static/media/SunCloud.17a10b9867570fb4d55d.png",
+    "static/media/Thunder.png": "/react_todos/static/media/Thunder.c84581bc766fad310a43.png",
+    "static/media/Cloud.png": "/react_todos/static/media/Cloud.8aed0d8dfd4193dcece0.png",
+    "static/media/Snow.png": "/react_todos/static/media/Snow.578acadd9b573c54769a.png",
+    "static/media/Rain.png": "/react_todos/static/media/Rain.43d91762ae11307a8d26.png",
+    "static/media/Fog.png": "/react_todos/static/media/Fog.4cfeee1179b554b6f861.png",
+    "static/media/DustStorm.png": "/react_todos/static/media/DustStorm.0136d40c511b372a9ded.png",
+    "static/media/Sun.png": "/react_todos/static/media/Sun.5bb3cb9fc4015111446d.png",
     "static/media/Shower.png": "/react_todos/static/media/Shower.7d92f889a8516ad63cf0.png",
     "index.html": "/react_todos/index.html",
-    "main.60670dfb.js.map": "/react_todos/static/js/main.60670dfb.js.map"
+    "main.dbb3d5c6.js.map": "/react_todos/static/js/main.dbb3d5c6.js.map"
   },
   "entrypoints": [
-    "static/js/main.60670dfb.js"
+    "static/js/main.dbb3d5c6.js"
   ]
 }
