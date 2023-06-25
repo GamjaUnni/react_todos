@@ -7,6 +7,7 @@ import { TiLocation } from "react-icons/ti";
 import cloudImg from "./assets/images/Shower.png";
 import Clock from "./components/clock";
 import { getTodos, saveTodos } from "./todosStorage";
+import Weather from "./components/weather";
 
 const ColorArr = ["#FEC971", "#FD9C74", "#B593FD", "#00D4FF", "#E3EE90"];
 
@@ -20,7 +21,6 @@ function App() {
         setWriteModeColor(color);
     };
 
-    console.log(getTodos());
     useEffect(() => {
         saveTodos(toDoList);
     }, [toDoList]);
@@ -55,6 +55,7 @@ function App() {
                                 <TiLocation className="icon_location" />
                                 벚꽃로 100길
                             </LocationInfo>
+                            <Weather />
                         </Location>
                     </NoteHeader>
                     <NoteTitle>Notes</NoteTitle>

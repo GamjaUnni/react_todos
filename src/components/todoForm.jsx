@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { styled } from "styled-components";
 import { BsCheckCircleFill } from "react-icons/bs";
-import { saveTodos } from "../todosStorage";
-import TodoList from "./todoList";
 
 function saveNowDate() {
     const monthNames = [

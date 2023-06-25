@@ -116,6 +116,10 @@ const ReadNote = styled.li`
         color: #c9cad0;
         * {
             color: #c9cad0;
+            stroke: #c9cad0;
+        }
+        .btn_update {
+            display: none;
         }
     }
     textarea {
