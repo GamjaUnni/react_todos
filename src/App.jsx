@@ -3,11 +3,9 @@ import TodoList from "./components/todoList";
 import { styled } from "styled-components";
 import GlobalStyle from "./globalStyle";
 import { AiFillPlusCircle } from "react-icons/ai";
-import { TiLocation } from "react-icons/ti";
-import cloudImg from "./assets/images/Shower.png";
 import Clock from "./components/clock";
 import { getTodos, saveTodos } from "./todosStorage";
-import Weather from "./components/weather";
+import Weather from "./components/weather/weather";
 
 const ColorArr = ["#FEC971", "#FD9C74", "#B593FD", "#00D4FF", "#E3EE90"];
 
@@ -31,7 +29,11 @@ function App() {
             <Container>
                 <ColorList>
                     <Logo>Todo's</Logo>
-                    <AiFillPlusCircle className="icon_plus" />
+                    <ColorPicker type="color" id="colorPicker" />
+                    <label htmlFor="colorPicker">
+                        <AiFillPlusCircle className="icon_plus" />
+                    </label>
+
                     <ColorBox>
                         {ColorArr.map((color, i) => (
                             <ColorNote
@@ -44,17 +46,10 @@ function App() {
                 </ColorList>
                 <NoteList>
                     <NoteHeader>
-                        {/* <NowTime>⏱ 2:40:15 PM</NowTime> */}
                         <NowTime>
                             ⏱ <Clock />
                         </NowTime>
                         <Location className="location">
-                            <img src={cloudImg} alt="" />
-                            <LocationInfo>
-                                <span>34°</span>
-                                <TiLocation className="icon_location" />
-                                벚꽃로 100길
-                            </LocationInfo>
                             <Weather />
                         </Location>
                     </NoteHeader>
@@ -208,4 +203,18 @@ const NowTime = styled.h3`
     color: #bebdbf;
     font-size: 12px;
     font-weight: 400;
+`;
+
+const ColorPicker = styled.input`
+    overflow: hidden;
+    display: block;
+    position: absolute;
+    border: 0;
+    width: 1px;
+    height: 1px;
+    clip: rect(1px, 1px, 1px, 1px);
+    & + label {
+        /* background: url("../images/icons/check_off.png") no-repeat left center; */
+        cursor: pointer;
+    }
 `;
