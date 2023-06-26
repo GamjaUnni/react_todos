@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/react_todos/static/js/main.dbb3d5c6.js",
+    "main.js": "/react_todos/static/js/main.7338a058.js",
     "static/media/SunCloud.png": "/react_todos/static/media/SunCloud.17a10b9867570fb4d55d.png",
     "static/media/Thunder.png": "/react_todos/static/media/Thunder.c84581bc766fad310a43.png",
     "static/media/Cloud.png": "/react_todos/static/media/Cloud.8aed0d8dfd4193dcece0.png",
@@ -11,9 +11,9 @@
     "static/media/Sun.png": "/react_todos/static/media/Sun.5bb3cb9fc4015111446d.png",
     "static/media/Shower.png": "/react_todos/static/media/Shower.7d92f889a8516ad63cf0.png",
     "index.html": "/react_todos/index.html",
-    "main.dbb3d5c6.js.map": "/react_todos/static/js/main.dbb3d5c6.js.map"
+    "main.7338a058.js.map": "/react_todos/static/js/main.7338a058.js.map"
   },
   "entrypoints": [
-    "static/js/main.dbb3d5c6.js"
+    "static/js/main.7338a058.js"
   ]
 }
