@@ -6,7 +6,7 @@ import { AiFillPlusCircle } from "react-icons/ai";
 import Clock from "./components/clock";
 import { getTodos, saveTodos } from "./todosStorage";
 import Weather from "./components/weather/weather";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 const ColorArr = ["#FEC971", "#FD9C74", "#B593FD", "#00D4FF", "#E3EE90"];
 
@@ -193,23 +193,6 @@ const Location = styled.div`
     }
 `;
 
-const LocationInfo = styled.div`
-    padding-left: 8px;
-    span {
-        padding-bottom: 4px;
-        padding-left: 4px;
-        display: inline-block;
-        font-size: 20px;
-        font-weight: 500;
-        color: #242e47;
-    }
-    .icon_location {
-        margin-left: 6px;
-        font-size: 18px;
-        margin-bottom: -2px;
-        color: #258fff;
-    }
-`;
 const NoteHeader = styled.div`
     display: flex;
     justify-content: space-between;

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { styled } from "styled-components";
 import { BsCheckCircleFill } from "react-icons/bs";
+import { motion } from "framer-motion";
 
 function saveNowDate() {
     const monthNames = [
@@ -62,7 +63,16 @@ const TodoForm = ({ setTodoList, writeModeColor, setWriteMode }) => {
     };
 
     return (
-        <TextBox onSubmit={onSubmit}>
+        <TextBox
+            onSubmit={onSubmit}
+            initial={{ scale: 0 }}
+            animate={{ rotate: 360, scale: 1 }}
+            transition={{
+                type: "spring",
+                stiffness: 260,
+                damping: 20,
+            }}
+        >
             <TextArea
                 value={todo}
                 onChange={onChange}
@@ -78,7 +88,7 @@ const TodoForm = ({ setTodoList, writeModeColor, setWriteMode }) => {
 
 export default TodoForm;
 
-const TextBox = styled.form`
+const TextBox = styled(motion.form)`
     position: relative;
     .btn_edit {
         position: absolute;
