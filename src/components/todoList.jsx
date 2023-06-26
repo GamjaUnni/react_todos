@@ -156,7 +156,7 @@ const ReadNote = styled.li`
 `;
 const WrotedDate = styled.p`
     padding-top: 8px;
-    font-size: 12px;
+    font-size: 11px;
 `;
 const BtnBox = styled.div`
     display: flex;

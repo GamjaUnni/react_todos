@@ -6,6 +6,7 @@ import { AiFillPlusCircle } from "react-icons/ai";
 import Clock from "./components/clock";
 import { getTodos, saveTodos } from "./todosStorage";
 import Weather from "./components/weather/weather";
+import { motion, AnimatePresence } from "framer-motion";
 
 const ColorArr = ["#FEC971", "#FD9C74", "#B593FD", "#00D4FF", "#E3EE90"];
 
@@ -34,15 +35,23 @@ function App() {
                         <AiFillPlusCircle className="icon_plus" />
                     </label>
 
-                    <ColorBox>
-                        {ColorArr.map((color, i) => (
-                            <ColorNote
-                                key={color + i}
-                                bgcolor={color}
-                                onClick={() => changeWriteMode(color)}
-                            ></ColorNote>
-                        ))}
-                    </ColorBox>
+                    {/* <AiFillPlusCircle className="icon_plus" /> */}
+                    <ColorWarp>
+                        <ColorBox
+                            variants={colorVariants}
+                            initial="initial"
+                            animate="animate"
+                            exit="exit"
+                        >
+                            {ColorArr.map((color, i) => (
+                                <ColorNote
+                                    key={color + i}
+                                    bgcolor={color}
+                                    onClick={() => changeWriteMode(color)}
+                                ></ColorNote>
+                            ))}
+                        </ColorBox>
+                    </ColorWarp>
                 </ColorList>
                 <NoteList>
                     <NoteHeader>
@@ -65,11 +74,28 @@ function App() {
                     </TodoBox>
                 </NoteList>
             </Container>
+            <ReservedTxt>© 2023. Yuna Park all rights reserved.</ReservedTxt>
         </Wrapper>
     );
 }
 
 export default App;
+
+const duration = { duration: 0.5 };
+const colorVariants = {
+    initial: {
+        marginTop: -300,
+        transition: duration,
+    },
+    animate: {
+        marginTop: 0,
+        transition: duration,
+    },
+    exit: {
+        marginTop: -300,
+        transition: duration,
+    },
+};
 
 const Wrapper = styled.div`
     /* background-color: ${(props) => props.bgcolor}; */
@@ -107,8 +133,10 @@ const ColorList = styled.div`
         cursor: pointer;
     }
 `;
-
-const ColorBox = styled.ul`
+const ColorWarp = styled.div`
+    overflow: hidden;
+`;
+const ColorBox = styled(motion.ul)`
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -216,5 +244,14 @@ const ColorPicker = styled.input`
     & + label {
         /* background: url("../images/icons/check_off.png") no-repeat left center; */
         cursor: pointer;
+    }
+`;
+const ReservedTxt = styled.div`
+    padding-top: 10px;
+    padding-right: 10px;
+    font-size: 11px;
+    text-align: right;
+    @media (max-width: 600px) {
+        display: none;
     }
 `;
