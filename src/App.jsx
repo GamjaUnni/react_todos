@@ -30,12 +30,12 @@ function App() {
             <Container>
                 <ColorList>
                     <Logo>Todo's</Logo>
-                    <ColorPicker type="color" id="colorPicker" />
+                    {/* <ColorPicker type="color" id="colorPicker" />
                     <label htmlFor="colorPicker">
                         <AiFillPlusCircle className="icon_plus" />
-                    </label>
+                    </label> */}
 
-                    {/* <AiFillPlusCircle className="icon_plus" /> */}
+                    <AiFillPlusCircle className="icon_plus" />
                     <ColorWarp>
                         <ColorBox
                             variants={colorVariants}
